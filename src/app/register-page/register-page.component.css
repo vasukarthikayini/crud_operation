@@ -1,0 +1,21 @@
+
+
+.form-control.ng-touched.ng-invalid {
+    border:1px solid red
+    ;
+   }
+   .form-control.ng-touched.ng-valid {
+    border:1px solid green;
+    
+   }
+   .container {
+   
+    background-image: url("https://wpforms.com/wp-content/uploads/2017/07/beautiful-contact-form-designs-you-can-steal.jpg");
+    
+    font-family: 'Poppins', sans-serif;
+    color:black;
+    height: 200vh;
+    opacity: 0.8;
+    width: 150%;
+   
+}

@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'simple';
+  key: string = 'name'
+  email: string;
+  password: string;
+  repassword: string;
+  storeName(){
+    localStorage.setItem(this.key, 'angular');
+   
+  }
 }
