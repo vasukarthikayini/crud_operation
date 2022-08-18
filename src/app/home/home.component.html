@@ -6,25 +6,30 @@
     This some text within a card body.
 
 
-<table>
+<!--<table>
     <tr>
     <th>id</th> 
-    <th>type</th>
+    <th><title></title></th>
 </tr> 
  <tr *ngFor="let data of arrData">
         <td>
             {{ data.id }}
         </td>
         <td>
-            {{ data.name }}
+            {{ data.title }}
         </td>
     </tr>
-</table>
-   <!--<table class="table">
+</table>-->
+<div class="container">
+    <h2>Basic Table </h2>
+
+   <table class="table">
         <thead>
             <tr>
-                <th>id</th>
-                <th>data</th>
+                <th>ID</th>
+                <th>ata</th>
+                <th>USER Id</th>
+                <th>Action </th>
             </tr>
         </thead>
         <tbody>
@@ -33,11 +38,42 @@
                     {{ data.id }}
                 </td>
                 <td>
-                    {{ data.name }}
+                    {{ data.title }}
                 </td>
-            
-            </tr>
-        </tbody>
-     </table>-->
+                <td>
+                    {{ data.id }}
+                </td>
+             <td>
+                <button (click)="openModalnew()(template)">Edit</button>
+             </td>
+             <td>
+                <button (click)="openModal(template,data)">Delete </button> 
+             </td>
+            </table>  
+        </div>
+        <input>
+            id:<input type="text" (ngmodel)="editData">
+         
+            title:<input value=" editData.title"/>
+        </div>
+       
+
+    <button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>
+
+        <ng-template #template>
+           <div class="modal-header">
+              <h4 class="modal-title pull-left">Modal</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                 <span aria-hidden="true">×</span>
+              </button>
+           </div>
+           <div class="modal-body">
+              This is a sample modal dialog box.
+           </div>
+           <div class="modal-footer">
+              <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
+           </div>
+        </ng-template>
+   
 
        

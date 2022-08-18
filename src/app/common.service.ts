@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { BASE_URL } from './utils/constant'
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
-  baseURL = "https://reqres.in/api/products";
+
 
   constructor(private http: HttpClient) {
 
@@ -15,5 +15,7 @@ export class CommonService {
 
    }
    getMyAllData() {
-    return this.http.get(this.baseURL)
-   } }
+    return this.http.get(BASE_URL)
+   } 
+   
+  }

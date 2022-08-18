@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { TitleStrategy } from '@angular/router';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { CommonService } from '../common.service';
-
+import { FormsModule } from '@angular/forms';
+//import { mbdModalRef } from 'ndb-angular-ui-kit/model,';
+import { BsModalRef, BsModalService  } from 'ngx-bootstrap/modal';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +13,18 @@ import { CommonService } from '../common.service';
 export class HomeComponent  {
   showFlag = false;
   arrData : any;
- constructor(private dataService : CommonService) {}
+  editData: {};
+  modalRef: BsModalRef
+ constructor(private dataService : CommonService,private modalService: BsModalService ) {}
+ 
+ openModalnew(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+  this.modalRef.hide();  
+  console.log(this.modalRef)
+}
+
+ 
+ 
  showStyle(){
   
   this.showFlag = true
@@ -27,9 +40,14 @@ export class HomeComponent  {
         this.arrData = res;
         console.log(this.arrData);
       }
-    });
+    })
+    
+    
   }
-  
+  openModal(Data): void {
+    console.log('data Value', Data)
+    this.editData = Data
+  }
     }
   
     
