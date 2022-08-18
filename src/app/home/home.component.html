@@ -1,1 +1,43 @@
-<p>home works!</p>
+
+<p>home work!</p>
+<button type="button" class="btn btn-primary" (click)="showStyle()">primary</button>
+<div class="card" *ngIf="showStyle"> </div>
+<div class="card-body">
+    This some text within a card body.
+
+
+<table>
+    <tr>
+    <th>id</th> 
+    <th>type</th>
+</tr> 
+ <tr *ngFor="let data of arrData">
+        <td>
+            {{ data.id }}
+        </td>
+        <td>
+            {{ data.name }}
+        </td>
+    </tr>
+</table>
+   <!--<table class="table">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of arrData">
+                <td>
+                    {{ data.id }}
+                </td>
+                <td>
+                    {{ data.name }}
+                </td>
+            
+            </tr>
+        </tbody>
+     </table>-->
+
+       

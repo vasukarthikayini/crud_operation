@@ -10,7 +10,8 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
- // registerForm: FormGroup;
+ //registerForm: FormGroup;
+ data="hello"
 
   constructor( private router :Router) { }
   login() {

@@ -5,15 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CommonService {
-  baseURL = "https://reqres.in/api/products"
+  baseURL = "https://reqres.in/api/products";
 
   constructor(private http: HttpClient) {
 
-   }
+   } 
+   
    ngOnInit() {
 
    }
    getMyAllData() {
-    return this.http.get(this.baseURL);
-   }
-}
+    return this.http.get(this.baseURL)
+   } }

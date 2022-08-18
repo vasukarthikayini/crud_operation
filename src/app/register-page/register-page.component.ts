@@ -35,8 +35,10 @@ export class RegisterPageComponent implements OnInit {
   }
 
   clicksub() {
-    console.log(this.exform.value);
-    this.exform.reset();
+    console.log("checkin",this.exform.value);
+    localStorage.setItem( "key", JSON.stringify (this.exform.value))
+    
+    //this.exform.reset();
   }
   get name() {
     return this.exform.get('name');
