@@ -27,7 +27,7 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>ata</th>
+                <th>Data</th>
                 <th>USER Id</th>
                 <th>Action </th>
             </tr>
@@ -43,37 +43,89 @@
                 <td>
                     {{ data.id }}
                 </td>
+             
+               
+             
              <td>
-                <button (click)="openModalnew()(template)">Edit</button>
+                <button  type="button" class="btn btn-primary" (submit)="openModal(template)">Delete </button> 
              </td>
              <td>
-                <button (click)="openModal(template,data)">Delete </button> 
+                <button  type="button" class="btn btn-primary" (submit)="onClickSubmit(template)">Update </button> 
              </td>
             </table>  
         </div>
         <input>
             id:<input type="text" (ngmodel)="editData">
          
-            title:<input value=" editData.title"/>
+            title:<input value="editData.title"/>
         </div>
+
+  
+        
        
 
-    <button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>
+   <!--<button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>-->
 
-        <ng-template #template>
+       <!-- <ng-template #template>
            <div class="modal-header">
               <h4 class="modal-title pull-left">Modal</h4>
             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
                  <span aria-hidden="true">×</span>
-              </button>
-           </div>
+              </button>-->
+              <span>
+                <form>
+             <div class="offcanvas offcanvas-start" id="offscreen">
+                <div class="offcanvas-header">
+                    <h1 class="offcanvas-title">Update</h1>
+                    <button type ="button" class="btn close" data-bs-dimiss="offcanvas"></button>
+
+                </div>
+                <div class="offcanvas-body">
+                    <form onsubmit="update">
+                    </form>
+                    <input type="text" id="id" title="title" placeholder="id"><br>
+                    <span id="id" class="text-danger"></span>
+                    <span title="title"class="text-danger"></span>
+                    
+                </div>
+             </div>
+
+                </form>
+              </span>
+             <!--<div>
+                <label for="id">id: </label>
+                <input id="id" type="text" [formControl]="id">
+                <td><button type="button" class="btn btn-danger" (click)="openModalnew(template)">Edit</button></td>
+              </div>--> 
+           
+              
+             
+
+          <!-- </div>
            <div class="modal-body">
-              This is a sample modal dialog box.
-           </div>
+            
+        </div>
+        <form 
+            [formGroup]="formdata" [ngsubmit]="onclickSubmit(formdata.value)">
+                <label>Id</label>
+                <input type = "text" next="title" placeholder="title" formControlName =  'id'/>
+                <br/>
+                <label>Title</label>
+                <input type = "text" next="title" placeholder="title" formControlName =  'title'/>
+                <br/>
+                <input type="submit" class="btn btn-primary" value="Update" />
+               <div class="mb-1">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button (click)="save()" [disabled]="userform.invalid" class="btn btn-primary" type="button">
+                            {{id==0 || id==null ?'Save':'Update'}}</button>
+                        <button class="btn btn-secondary" type="button">Reset </button>
+                    </div>
+                </div>
+            </form>
            <div class="modal-footer">
               <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
            </div>
         </ng-template>
-   
+    -->
 
        
