@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
     RegisterPageComponent,
     DashboardComponent,
     MainComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
