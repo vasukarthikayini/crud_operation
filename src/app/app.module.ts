@@ -10,10 +10,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MainComponent } from './main/main.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthguardService } from './authguard.service';
+import { HeadersInterceptor } from './headers.interceptor';
+import { Router } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,18 +26,23 @@ import { NotFoundComponent } from './not-found/not-found.component';
     DashboardComponent,
     MainComponent,
     NotFoundPageComponent,
-    NotFoundComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,HttpClientModule,
     FormsModule,
     ModalModule
+   ],
+  providers: [BsModalService, 
+    AuthguardService,   {
+     provide: HTTP_INTERCEPTORS, 
+     useClass: HeadersInterceptor,
+      multi: true
+    }
+  
 
-   
-  ],
-  providers: [BsModalService],
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

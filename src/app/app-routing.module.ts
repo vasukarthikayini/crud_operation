@@ -5,6 +5,8 @@ import { DashboardComponent} from './dashboard/dashboard.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { AuthguardService } from './authguard.service';
+import { AuthenticationGuard } from './authentication.guard';
 
 
 const routes: Routes = [
@@ -26,7 +28,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterPageComponent 
+    component: RegisterPageComponent
   },
   {
     path: '**',

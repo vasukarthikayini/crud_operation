@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Route, Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -11,8 +12,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class RegisterPageComponent implements OnInit {
 
   exform: FormGroup;
+  constructor(private router:Router, private  ActivatedRoute: ActivatedRoute) {
+    const data = this.router.getCurrentNavigation()?.extras?.state?.['hello']
+    console.log('inside the data', data);
+  }
 
   ngOnInit() {
+    this.ActivatedRoute
+    .queryParams
+    .subscribe(params => {
+      console.log('inside the data', params)
+      
+    });
   
   this.exform = new FormGroup({
     'name' : new FormControl(null, Validators.required),
@@ -40,6 +51,7 @@ export class RegisterPageComponent implements OnInit {
     
     //this.exform.reset();
   }
+  
   get name() {
     return this.exform.get('name');
   }
@@ -52,6 +64,7 @@ export class RegisterPageComponent implements OnInit {
   get repatepassword() {
     return this.exform.get('repate-password');
   }
+ 
 
 }
 
