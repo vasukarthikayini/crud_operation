@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { TitleStrategy } from '@angular/router';
+import { Data, TitleStrategy } from '@angular/router';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { CommonService } from '../common.service';
 import { FormControl, FormsModule } from '@angular/forms';
@@ -13,13 +13,14 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent {
+export class IHomeComponent {
   showFlag = false;
   arrData: any;
   editData: {};
   updateData: {};
   modalRef: BsModalRef;
   title: string;
+  Id: number;
   currentItem: 'hello world';
 
   formData: FormGroup;
@@ -31,8 +32,8 @@ export class HomeComponent {
   ) {}
 
   //openModalnew(template: TemplateRef<any>) {
-    //this.modalRef = this.modalService.show(template);
-    //console.log(this.modalRef);
+  //this.modalRef = this.modalService.show(template);
+  //console.log(this.modalRef);
   //}
   showStyle() {
     this.showFlag = true;
@@ -57,34 +58,53 @@ export class HomeComponent {
     });
     this.modalRef = this.modalService.show(Template);
   }
-  onclickSubmit(updatedData: object): void {
-    console.log('inside the data',this.updateData)
-    this.dataService.updateData(this.updateData).subscribe((result) => {
-      console.log('result.>', result);
-    });
-    this.modalService.hide();
+  //onclickSubmit(updatedData: object): void {
+    //console.log('inside the data', this.updateData);
+
+    //this.dataService.updateData(this.updateData).subscribe((result) => {
+      //console.log('result.>', result);
+
+      //this.dataService.updateData()
+   // });
+    //this.modalService.hide();
+  //}
+  onclickSubmit(updateData: object) {
+    console.log('request data', updateData)
+    this.dataService.updateData(updateData)
+    .subscribe({
+      next:(data) => {
+        //this.router.navigate(["/home"])
+      },
+      error: (err) => {
+        console.log(err)
+      }
+    })
   }
   addItem(data: any) {
     console.log('data come from the child component', data);
   }
   deletemodal(data: any): void {
-
-    this.modalRef = this.modalService.show(data);
+    this.updateData = data
+    console.log('delete data', data)
+    //this.modalRef = this.modalService.show(data);
   }
   deleteData(): void {
+    this.dataService.deleteData(this.updateData).subscribe((result) => {
+      console.log('result.>', result);
+
+      //this.dataService.updateData()
+    });
 
   }
-   // this.route.navigate(['/register'], { queryParams: { serviceId: 22 } });
-    //this.route.navigateByUrl('/register-page', { state: { hello: 'world' } });
-  
+  // this.route.navigate(['/register'], { queryParams: { serviceId: 22 } });
+  //this.route.navigateByUrl('/register-page', { state: { hello: 'world' } });
+
   editnewData(data) {
     this.formData.setValue({
       title: data.title,
       id: data.id,
     });
-  
   }
-  
 }
 //getValues(){
 //this.dataService.getMyAllData().subscribe({

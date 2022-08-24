@@ -9,7 +9,9 @@ import { AuthguardService } from './authguard.service';
 import { AuthenticationGuard } from './authentication.guard';
 
 
-const routes: Routes = [
+
+
+const routes : Routes = [
   {
     path: '',
     component: HomeComponent
@@ -34,6 +36,11 @@ const routes: Routes = [
     path: '**',
     component: NotFoundPageComponent
   },
+  {
+    path: "user",
+    loadChildren: () => import("./user/user/user.module").then (m => m.UserModule)
+  },
+ 
 ];
 
 @NgModule({
