@@ -10,14 +10,14 @@ import { Route, Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
-
+  
   exform: FormGroup;
   constructor(private router:Router, private  ActivatedRoute: ActivatedRoute) {
     const data = this.router.getCurrentNavigation()?.extras?.state?.['hello']
     console.log('inside the data', data);
+     
   }
-
-  ngOnInit() {
+   ngOnInit() {
     this.ActivatedRoute
     .queryParams
     .subscribe(params => {
@@ -35,6 +35,7 @@ export class RegisterPageComponent implements OnInit {
         Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$')
       ]),
     'Password' : new FormControl(null, [Validators.required, Validators.minLength(10)])
+    
   });
   'repate-password' ; new FormControl (
     '',

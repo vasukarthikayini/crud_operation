@@ -11,12 +11,16 @@ import { MainComponent } from './main/main.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
-import {HTTP_INTERCEPTORS  } from '@angular/common/http';
+import { HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ModalModule, BsModalService } from 'ngx-bootstrap/modal';
 import { AuthguardService } from './authguard.service';
 import { HeadersInterceptor } from './headers.interceptor';
 import { Router } from '@angular/router';
+//import { UserComponent } from './user/user/user.component';
+import { MessageService } from './message.service';
+import { MessageBoardComponent } from './message-board/message-board.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,16 +30,21 @@ import { Router } from '@angular/router';
     DashboardComponent,
     MainComponent,
     NotFoundPageComponent,
+    MessageBoardComponent,
+    //UserComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,HttpClientModule,
     FormsModule,
-    ModalModule
+    ModalModule,
+    BrowserAnimationsModule
    ],
-  providers: [BsModalService, 
-    AuthguardService,   {
+  providers: [BsModalService,
+    MessageService,  
+    AuthguardService, 
+     {
      provide: HTTP_INTERCEPTORS, 
      useClass: HeadersInterceptor,
       multi: true
