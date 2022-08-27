@@ -7,14 +7,22 @@ import { FormGroup } from '@angular/forms';
 //import { mbdModalRef } from 'ndb-angular-ui-kit/model,';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
+import { MessageService } from '../message.service';
+import { PaginatePipe } from 'ngx-pagination';
+
+
+
+
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class IHomeComponent {
+export class HomeComponent {
   showFlag = false;
+ 
   arrData: any;
   editData: {};
   updateData: {};
@@ -22,12 +30,18 @@ export class IHomeComponent {
   title: string;
   Id: number;
   currentItem: 'hello world';
+  page: number = 1;
+  count: number = 0;
+  tableSize: number = 7;
+  tableSizes: any = [3, 6, 9, 12];
 
   formData: FormGroup;
   id = new FormControl('');
+  
   constructor(
     private dataService: CommonService,
     private modalService: BsModalService,
+    private message: MessageService,
     private route: Router
   ) {}
 
@@ -39,6 +53,7 @@ export class IHomeComponent {
     this.showFlag = true;
   }
   ngOnInit(): void {
+    
     this.dataService.getMyAllData().subscribe((Response) => {
       this.arrData = Response;
     });
@@ -79,6 +94,7 @@ export class IHomeComponent {
         console.log(err)
       }
     })
+    
   }
   addItem(data: any) {
     console.log('data come from the child component', data);
@@ -105,6 +121,20 @@ export class IHomeComponent {
       id: data.id,
     });
   }
+  sendMessage(data){
+    this.message.sendMessage(data.value)
+  }
+  onTableDataChanges(event: any) {
+    this.page = event;
+    this.arrData();
+  }
+  onTableSizeChange(event: any): void {
+    this.tableSize = event.target.value;
+    this.page = 1;
+    this.arrData();
+  }
+  
+  
 }
 //getValues(){
 //this.dataService.getMyAllData().subscribe({

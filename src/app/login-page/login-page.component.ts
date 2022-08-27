@@ -15,7 +15,22 @@ export class LoginPageComponent implements OnInit {
 
   constructor( private router :Router) { }
   login() {
-    this.router.navigate(['/register'])
+    var txt;
+    if(confirm("login successfully!")) {
+      txt= "ok move on the next process";
+      this.router.navigate(['/register'])
+      //console.log('inside the if condition', txt)
+     }
+    else(confirm('please enter valid email or password!')) 
+    {
+      
+      txt = "move to home page";
+      this.router.navigate(['/home'])
+      //console.log('inside the else condition', txt)
+}
+    document.getElementById("demo").innerHTML = txt;
+   
+   
   }
 
   ngOnInit(): void {
@@ -27,6 +42,7 @@ export class LoginPageComponent implements OnInit {
    // });
     
   }
+  
  // private  fb: FormBuilder 
  
 }

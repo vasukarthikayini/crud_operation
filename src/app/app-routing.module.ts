@@ -11,6 +11,7 @@ import { AuthenticationGuard } from './authentication.guard';
 
 
 
+
 const routes : Routes = [
   {
     path: '',
@@ -38,7 +39,7 @@ const routes : Routes = [
   },
   {
     path: "user",
-    loadChildren: () => import("./user/user/user.module").then (m => m.UserModule)
+    loadChildren: () => import("./user/user.module").then (m => m.UserModule)
   },
  
 ];

@@ -16,16 +16,19 @@
                   <input formControlName="email" type="text" class="form-control" >
                   <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
                 </div>
-                <div class="form-group">
+                
+                validation for password
+               <div class="form-group">
                   <label class="col-form-label">password:</label>
-                  <input formControlName="phone" type="text" class="form-control" >
+                  <input  formControlName="phone" type="text" class="form-control" >
                   <small *ngIf="password.invalid && password.touched" class="text-danger">Phone no is Required(minimum length 10,numbers are only allowed)</small>
                 </div>
                 <div class="form-group">
                   <label class="col-form-label">repate-password:</label> 
-                  <textarea formControlName="message" class="form-control" ></textarea>
+                  <textarea formControlName="message" class="form-control"></textarea>
                   <small *ngIf="repatepassword.invalid && repatepassword.touched" class="text-danger"> repate-password is Required(minimum length 10)</small> 
                 </div>
+
                 <button (click)="clicksub()" [disabled]="exform.invalid" type="button" class="btn btn-primary">Send message</button>
               </form>
         </div>

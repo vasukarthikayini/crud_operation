@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -19,5 +20,6 @@ export class DashboardComponent implements OnInit {
   console.log('inside the  addnewItem')
     this.newItemEvent.emit('i am from child component');
   }
+  
 
 }

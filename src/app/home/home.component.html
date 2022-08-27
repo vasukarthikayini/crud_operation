@@ -1,11 +1,12 @@
+<button type="button" class="btn btn-primary" (click)="showStyle()">
+  Details
+</button>
+<div class="card" *ngIf="showStyle"></div>
 
-<button type="button" class="btn btn-primary" (click)="showStyle()">primary</button>
-<div class="card" *ngIf="showStyle"> </div>
 <div class="card-body">
-    This some text within a card body.
+  This some text within a card body.
 
-
-<!--<table>
+  <!--<table>
     <tr>
     <th>id</th> 
     <th><title></title></th>
@@ -19,75 +20,134 @@
         </td>
     </tr>
 </table>-->
-<div class="container">
-    <h2>Basic Table </h2>
+  <div class="datatable md-4">
+    <h2>Basic Table</h2>
+    <table
+    class="table datatable-table"
+    mdbTable
+    mdbTableSort>
+   <thead class="datatable-header">
+        <tr>
+          <th>ID</th>
+          <th>title</th>
+          <th>USER Id</th>
+          <th>Action</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngFor="let data of arrData | paginate: {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count };
+          let i = index">
+          <td>
+            {{ data.id }}
+          </td>
+          <td>
+            {{ data.title }}
+          </td>
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChanges($event)"
+            >
+            </pagination-controls>
+          </div>
+          
 
-   <table class="table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>title</th>
-                <th>USER Id</th>
-                <th>Action </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let data of arrData">
-                <td>
-                    {{ data.id }}
-                </td>
-                <td>
-                    {{ data.title }}
-                </td>
-              
-                 <td>
-                    <button type="button" class="btn btn-primary" (click)="editnewData(data)">Edit</button>
-                </td>
-                <td>
-                    <button  type="button" class="btn btn-primary" (submit)="deleteModal(data.id)">Delete </button> 
-
-                </td>
-                
-               
-             
-            
-        
-        </table>  
-       
-       <div class="from">
-            <form [formGroup]="formData">
-                <label for="userid">Id</label>
-                <input type="text id" id="fname" placeholder="id" formControlName="id">
-                <label for="title"><Title></Title> </label>
-                <input type="text id" id="title" placeholder="title" formControlName="title">
-               <button type="submit" (click)="onclickSubmit(updateData)">update</button>
-              
-               </form>
+         <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="editnewData(data)"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-primary"
+              (submit)="deleteModal(data.id)"
+            >
+              Delete
+            </button>
+            <button
+            type="button"
+            class="btn btn-primary"
+            routerLink="dashboard"
+          >
+           Details
+          </button>
+          </td>
         </div>
-        <div class="from">
-            delete the data
-            
-            <button type="button" class="btn btn primary" (click)="deleteData()">yes</button>
-                <!---<td>
+      </tbody>
+    </table>
+    
+      
+ <div class="from">
+      <form [formGroup]="formData">
+        <label for="userid">Id</label>
+        <input
+          type="text id"
+          id="fname"
+          placeholder="id"
+          formControlName="id"
+        />
+        <label for="title"> title </label>
+        <input
+          type="text id"
+          id="title"
+          placeholder="title"
+          formControlName="title"
+        />
+        <button type="submit" (click)="onclickSubmit(updateData)">
+          update
+        </button>
+      </form>
+      
+    </div>
+    <div class="from">
+      delete the data
+
+      <button type="button" class="btn btn primary" (click)="deleteData()">
+        yes
+      </button>
+    
+      <!---<td>
                 <button  type="button" class="btn btn-primary" (submit)="Delete(data)">Delete </button> 
              </td>
 
             <button type="button" class="btn btn primary" (click)="deleteData(data)">Close</button>-->
-        </div>
-           
-            
-           
+    </div>
+    <div class="from">
+      Lazy loading the data
+      <button
+        style="padding: 15px; color: white; background-color: pink"
+        routerLink="user"
+      >
+        Load Module A
+      </button>
+    </div>
+    <div>
+      Subjects in angular 
+      <p> Enter message: <input type="text" #message />
+        <button (click)="sendMessage(message)"> Send message</button>
+      </p>
+     
+    </div>
 
-            
-        
-        
-        <app-dashboard [item]="currentItem" (newItemEvent)="addItem($event)"></app-dashboard>
-           <!-- <td>
+    <app-dashboard
+      [item]="currentItem"
+      (newItemEvent)="addItem($event)"
+    ></app-dashboard>
+    <!-- <td>
                 <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offscreen" (submit)="OnClickSubmit()">Update </button> 
              </td>-->
-          
 
-          <!-- <ng-template #template>
+    <!-- <ng-template #template>
             <div class="modal-header">
                <h4 class="modal-title pull-left">Modal</h4>
              <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -115,9 +175,7 @@
         </div>
    </ng-template>-->
 
-        
-
-     <!--  <div>
+    <!--  <div>
 
         <input>
             id:<input type="text" (ngmodel)="editData">
@@ -142,15 +200,14 @@
              </div>
              <td>
                 <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offscreen" (submit)="OnClickSubmit()">Update </button> -->
-            
-             
-             <!--<div>
+
+    <!--<div>
                 <label for="id">id: </label>
                 <input id="id" type="text" [formControl]="id">
                 <td><button type="button" class="btn btn-danger" (click)="openModalnew(template)">Edit</button></td>
-              </div>--> 
-           
-               <!--<button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>
+              </div>-->
+
+    <!--<button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>
                 <div class="mb-1">
                      <div class="btn-group" role="group" aria-label="Basic example">
                          <button (click)="save()" [disabled]="userform.invalid" class="btn btn-primary" type="button">
@@ -158,7 +215,5 @@
                          <button class="btn btn-secondary" type="button">Reset </button>
                          
                      </div>-->
-
-    
-
-       
+  </div>
+</div>

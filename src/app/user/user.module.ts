@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 
 
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule
   ]
 })
-export class UserRoutingModule { }
+export class UserModule { 
+  
+}
