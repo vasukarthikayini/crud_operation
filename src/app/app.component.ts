@@ -9,10 +9,14 @@ export class AppComponent {
   title = 'simple';
   key: string = 'name'
   email: string;
-  password: string;
-  repassword: string;
-  storeName(){
+  
+
+ storeName(){
     localStorage.setItem(this.key, 'angular');
-   
-  }
+   // if(data.email === localStorage.getItem('email') && data.password === localStorage.getItem('password')){
+     // }else {
+       // alert('Please enter valid email or password')
+     // }
+    
+  }  
 }

@@ -1,15 +1,21 @@
+
+
 <div class="bg-img">
-    <form action="/action_page.php" class="container">
+    <form [formGroup]="loginForm" class="container" >
       <h1>Login</h1>
-  
+      <div class="form-group">
       <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Enter Email" name="email" required>
-      
-      
-  
+      <input type="text" placeholder="Enter Email" id="email" formControlName="email" name="email" required>
+      <span class="text-danger" *ngIf="loginForm.controls['email']"></span>
+    </div>
+  <div class="form-group">
       <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
+      <input type="password" placeholder="Enter Password" formControlName="password" id="password" name="psw" required>
+      <span class="text-danger" *ngIf="loginForm.controls['password']"></span>
        <p id="demo"></p>
-      <button type="submit"  class="btn btn-primary" (click)="login()">Login</button>
-    </form>
+      </div>
+      <button type="submit"  class="btn btn-primary" (click)="login(loginForm.value)">Login</button>
+   
+  </form>
+ 
   </div>

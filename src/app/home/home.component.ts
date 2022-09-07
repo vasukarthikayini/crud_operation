@@ -6,13 +6,12 @@ import { FormControl, FormsModule } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
 //import { mbdModalRef } from 'ndb-angular-ui-kit/model,';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Router } from '@angular/router';
+import { Router ,ActivatedRoute } from '@angular/router';
 import { MessageService } from '../message.service';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 import { PaginatePipe } from 'ngx-pagination';
-
-
-
-
+import { take } from 'rxjs';
+import { HomeModule } from './home.module';
 
 
 @Component({
@@ -22,67 +21,93 @@ import { PaginatePipe } from 'ngx-pagination';
 })
 export class HomeComponent {
   showFlag = false;
- 
-  arrData: any;
+  filterTerm!: string;
+  title: string;
+  item: '';
+  arrData: [] = [];
+  raja: any;
+  data: any;
   editData: {};
   updateData: {};
-  modalRef: BsModalRef;
-  title: string;
+  childdata: any;
   Id: number;
+  description: string;
+  price : number;
+  discountPercentage :number;
+  rating : number;
+  stock : number;
+  brand : string;
+  category: string;
+  modalRef: BsModalRef;
   currentItem: 'hello world';
   page: number = 1;
   count: number = 0;
-  tableSize: number = 7;
-  tableSizes: any = [3, 6, 9, 12];
-
+  tableSize: number = 10;
+  tableSizes: any = [5, 10, 15, 20];
   formData: FormGroup;
+  requests: any;
+
   id = new FormControl('');
   
   constructor(
     private dataService: CommonService,
     private modalService: BsModalService,
     private message: MessageService,
-    private route: Router
-  ) {}
+    private router:Router,
+    private route: ActivatedRoute,
+   ) {}
 
   //openModalnew(template: TemplateRef<any>) {
   //this.modalRef = this.modalService.show(template);
   //console.log(this.modalRef);
   //}
-  showStyle() {
-    this.showFlag = true;
-  }
+  
+
   ngOnInit(): void {
     
     this.dataService.getMyAllData().subscribe((Response) => {
-      this.arrData = Response;
+      console.log('api data', Response);
+      this.arrData = Response.products;
     });
+    this.dataService.getcommentsbyparameter().subscribe(data => {
+   // console.log('arr data', data);
+    this.arrData = data.products;
+    //console.log('data products', data.products);
+    })
+   
     localStorage.setItem('SeesionUser', 'karthikayini');
 
     this.formData = new FormGroup({
       title: new FormControl(''),
       id: new FormControl(),
     });
-    //this.getValues();
+ 
+//this.getValues();
+}
+  showStyle(item) {
+   
+  // console.log('inside the data', item);
+   this.router.navigate(['/dashboard'], {
+    state:{
+      data: item
+    }
+  });
+   
+    
+   // this.route.navigate(['/register'], { queryParams: { serviceId: 22 } });
+    
   }
   openModal(Template: TemplateRef<any>, data: any) {
     this.title = data.title;
     this.formData.setValue({
       title: data.title,
       id: data.Id,
-    });
+      });
+      
     this.modalRef = this.modalService.show(Template);
+   
   }
-  //onclickSubmit(updatedData: object): void {
-    //console.log('inside the data', this.updateData);
-
-    //this.dataService.updateData(this.updateData).subscribe((result) => {
-      //console.log('result.>', result);
-
-      //this.dataService.updateData()
-   // });
-    //this.modalService.hide();
-  //}
+ 
   onclickSubmit(updateData: object) {
     console.log('request data', updateData)
     this.dataService.updateData(updateData)
@@ -96,9 +121,7 @@ export class HomeComponent {
     })
     
   }
-  addItem(data: any) {
-    console.log('data come from the child component', data);
-  }
+
   deletemodal(data: any): void {
     this.updateData = data
     console.log('delete data', data)
@@ -115,46 +138,19 @@ export class HomeComponent {
   // this.route.navigate(['/register'], { queryParams: { serviceId: 22 } });
   //this.route.navigateByUrl('/register-page', { state: { hello: 'world' } });
 
-  editnewData(data) {
-    this.formData.setValue({
-      title: data.title,
-      id: data.id,
-    });
-  }
+ 
   sendMessage(data){
     this.message.sendMessage(data.value)
   }
   onTableDataChanges(event: any) {
     this.page = event;
-    this.arrData();
+    //this.arrData();
   }
   onTableSizeChange(event: any): void {
     this.tableSize = event.target.value;
     this.page = 1;
-    this.arrData();
+    //this.arrData();
   }
   
   
 }
-//getValues(){
-//this.dataService.getMyAllData().subscribe({
-// next: (res) => {
-// this.arrData = res;
-//console.log(this.arrData);
-//}
-//});
-//}
-
-//console.log('data Value', Data)
-//this.editData = Data
-
-//this.dataService.getMyAllData().subscribe(response => {
-//console.log('inside the data', response)
-//this.arrData = response
-//})
-//showStyle(){
-//console.log("check", this.value);
-//arrData : any
-//}
-
-//}

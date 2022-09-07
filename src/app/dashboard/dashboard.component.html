@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<!--<ul class="list">
+
+  <li *ngFor="let item of arrData" [ngClass]="{'active': arrData[options] === data}"(click)="onClick(arrData)">{{item}}</li>
+ 
+</ul>-->
+<p> {{ data }}</p>
+<table
+  class="table table-bordered"> 
+ 
+  <thead class="datatable-header">
+      
+        <th>ID</th>
+        <th>title</th>
+        <th>description</th>
+        <th>price</th>
+        <th>discountPercentage</th>
+        <th>rating</th>
+        <th>stock</th>
+        <th>brand</th>
+        <th>category</th>
+        <td>
+        <button
+        type="button"
+        class="btn btn-primary">Edit</button>
+     </td>
+     
+     <td>
+    <button
+        type="button"
+        class="btn btn-primary">Delete</button>
+   </td>
+      </thead>
+   
+</table>
+
+
+    
+   
+
+        

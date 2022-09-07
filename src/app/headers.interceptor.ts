@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { 
   HttpRequest,
+  HttpClient,
   HttpHandler,
   HttpEvent,
   HttpInterceptor,
@@ -13,7 +14,7 @@ import { Token } from '@angular/compiler';
 @Injectable()
 export class HeadersInterceptor implements HttpInterceptor {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
   
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
@@ -21,7 +22,7 @@ export class HeadersInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('SeesionUser')
     if(!token){
       localStorage.clear()
-      this.router.navigate(['/login'])
+      this.router.navigate(['/dashboard'])
     }
     else {
       request = request.clone({

@@ -21,6 +21,11 @@ import { Router } from '@angular/router';
 import { MessageService } from './message.service';
 import { MessageBoardComponent } from './message-board/message-board.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { PipesModule } from 'w-ng5';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,15 +36,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MainComponent,
     NotFoundPageComponent,
     MessageBoardComponent,
+  
     //UserComponent
     ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule,HttpClientModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     FormsModule,
     ModalModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule,
+    PipesModule,
    ],
   providers: [BsModalService,
     MessageService,  

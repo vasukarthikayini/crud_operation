@@ -13,4 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
    exports: [CommonModule, NgxPaginationModule],
  
 })
-export class HomeModule { }
+export class HomeModule { 
+ 
+  
+}
