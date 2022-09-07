@@ -3,12 +3,14 @@
   <li *ngFor="let item of arrData" [ngClass]="{'active': arrData[options] === data}"(click)="onClick(arrData)">{{item}}</li>
  
 </ul>-->
+
 <p> {{ data }}</p>
 <table
   class="table table-bordered"> 
  
+ 
   <thead class="datatable-header">
-      
+  
         <th>ID</th>
         <th>title</th>
         <th>description</th>
@@ -18,20 +20,72 @@
         <th>stock</th>
         <th>brand</th>
         <th>category</th>
-        <td>
-        <button
-        type="button"
-        class="btn btn-primary">Edit</button>
-     </td>
-     
-     <td>
-    <button
-        type="button"
-        class="btn btn-primary">Delete</button>
-   </td>
-      </thead>
-   
-</table>
+        <th>action</th>
+        </thead>
+        <tbody>
+      
+      <tr *ngFor="let item of data | keyvalue">
+        <!--key: <b>{{item.key}}</b> and Value: <b>{{item.value}}</b> -->
+          <td>
+              {{ data.id }}
+            </td>
+            <td>
+              {{ data.title }}
+            </td>
+            <td>
+              {{ data.description }}
+             </td>
+             <td>
+              {{ data.price }}
+             </td>
+             <td>
+              {{ data.discountPercentage }}
+             </td>
+             <td>
+              {{ data.rating }}
+             </td>
+             <td>
+              {{ data.stock }}
+             </td>
+             <td>
+              {{ data.brand }}
+             </td>
+             <td>
+              {{ data.category }}
+             </td> 
+             <td><button type="button" class="btn btn-danger" (click)="openModalnew(data)">Edit</button></td>
+          <td><button
+          type="button"
+          class="btn btn-primary">Delete</button></td>
+           
+             
+          <div>
+          <label for="id">id: </label>
+          <input id="id" type="text" [formControl]="id"><br>
+          <label for="title">title: </label>
+          <input title="description " type="text" [formControl]="description"><br>
+
+          <label for="description ">description : </label>
+          <input price ="price " type="text" [formControl]="price "><br>
+          <label for="price ">price : </label>
+          <input discountPercentage="discountPercentage" type="text" [formControl]="discountPercentage"><br>
+          <label for="discountPercentage">discountPercentage: </label>
+          <input rating="rating" type="text" [formControl]="rating"><br>
+          <label for="rating">rating </label>
+          <input stock="stock" type="text" [formControl]="stock"><br>
+          <label for="stock">stock </label>
+          <input brand="brand" type="text" [formControl]="brand"><br>
+          <label for="category">category</label>
+          <input category="category" type="text" [formControl]="category">
+          
+          </div>
+        </tr>
+      </tbody>
+        
+         
+        </table>
+        
+
 
 
     

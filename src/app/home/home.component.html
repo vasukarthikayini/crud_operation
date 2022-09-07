@@ -8,7 +8,7 @@
       type="text"
       class="form-control"
       placeholder="Search..."
-      [(ngModel)]="filterTerm"
+      [(ngModel)]="userFilter.title"
       />
   </div>
   
@@ -17,27 +17,29 @@
    
    <thead class="datatable-header">
         <tr>
-          <th>ID</th>
-          <th>title</th>
-          <th>description</th>
+          <th (click)="sort(id)"> id &nbsp;<i class="fa fa-sort"></i> icon</th>
+          <th>title </th>
+          <th>description </th>
           <th>price</th>
-          <th>discountPercentage</th>
+          <th>discountPercentage </th>
           <th>rating</th>
           <th>stock</th>
           <th>brand</th>
           <th>category</th>
+          
          </tr>
       
     </thead>
     <tbody>
     
-    <tr *ngFor="let item of arrData | paginate:{
+    <tr *ngFor="let item of arrData | orderBy: key: reverse  |filterBy: userFilter | paginate:{
       itemsPerPage: tableSize,
       currentPage: page,
       totalItems: count 
-    } | filter: filterTerm  ;
+    };
       
       let i = index">
+   
          <td >
             {{ item.id }}
           </td>

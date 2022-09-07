@@ -24,8 +24,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { PipesModule } from 'w-ng5';
-
+//import { PipesModule } from 'w-ng5';
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +48,12 @@ import { PipesModule } from 'w-ng5';
     FormsModule,
     ModalModule,
     BrowserAnimationsModule,
+    Ng2OrderModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    PipesModule,
+ 
+    FilterPipeModule
+  
    ],
   providers: [BsModalService,
     MessageService,  

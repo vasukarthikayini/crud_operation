@@ -4,6 +4,7 @@ import { CommonService } from '../common.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgForOf } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
+import { KeyValue } from '@angular/common';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  
  
   arrData: [] = [];
   childata: [];
@@ -26,6 +28,7 @@ export class DashboardComponent implements OnInit {
   @Input() item: any;
   //@Input('arrData') item: {item};
  // @Output() newItemEvent = new EventEmitter<string>();
+ 
   
 
   constructor( private modalService: BsModalService, private route: ActivatedRoute,  
@@ -35,18 +38,40 @@ export class DashboardComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.extraData() 
+    //this.trackItem();
   //this.arrData = [];
     //console.log ('inside the data', this.item)
      //console.log(this.router.getCurrentNavigation()
+     
     }
-    extraData(){
-      (res)  => { 
-        this.data = res;
+    openModal(data: any) {
+      this.title = data.title;
+      this.formData.setValue({
+        title: data.title,
+        id: data.Id,
+        description: data.description,
+        price: data.price,
+        discountPercentage:data.discountPercentage,
+        rating:data.rating,
+        stock: data.stock 
+      });
       }
-      
-    }
-  }
+   
+    unsorted (){
+       }
+   // trackItem(index, item) {
+     // return item ? item.id : undefined;
+
+   // }
+   //private onCompare(_left: KeyValue<any, any>, _right: KeyValue<any, any>): number return -1;
+      }
+  
+   
+  
+   
+    
+  
+
 
   
  
@@ -56,36 +81,4 @@ export class DashboardComponent implements OnInit {
 // }
 
   
-  //editnewData(data) {
-   //this.formData.setValue({
-     // title: data.title,
-      //id: data.id,
-    //});
-  //}
-  //deletemodal(data: any): void {
-    //this.updateData = data
-   // console.log('delete data', data)
-    //this.modalRef = this.modalService.show(data);
-  //}
- //deleteData(): void {
-    //this.dataService.deleteData(this.updateData).subscribe((result) => {
-     // console.log('result.>', result);
-//});
-
-  //}
-  //onclickSubmit(updateData: object) {
-   // console.log('request data', updateData)
-    //this.dataService.updateData(updateData)
-    //.subscribe({
-    //  next:(data) => {
-        //this.router.navigate(["/home"])
-    //  },
-     // error: (err) => {
-      //  console.log(err)
-     // }
-   // })
-    
- // }
   
-
- 

@@ -1,4 +1,5 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+
 import { Data, TitleStrategy } from '@angular/router';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { CommonService } from '../common.service';
@@ -40,12 +41,16 @@ export class HomeComponent {
   category: string;
   modalRef: BsModalRef;
   currentItem: 'hello world';
+  userFilter:any={title:''};
   page: number = 1;
   count: number = 0;
   tableSize: number = 10;
   tableSizes: any = [5, 10, 15, 20];
   formData: FormGroup;
+  key: string = 'id';
+  reverse: boolean = false;
   requests: any;
+
 
   id = new FormControl('');
   
@@ -55,7 +60,7 @@ export class HomeComponent {
     private message: MessageService,
     private router:Router,
     private route: ActivatedRoute,
-   ) {}
+  ) {}
 
   //openModalnew(template: TemplateRef<any>) {
   //this.modalRef = this.modalService.show(template);
@@ -91,23 +96,21 @@ export class HomeComponent {
     state:{
       data: item
     }
+  
   });
+  console.log('item', item);
    
     
    // this.route.navigate(['/register'], { queryParams: { serviceId: 22 } });
     
   }
-  openModal(Template: TemplateRef<any>, data: any) {
-    this.title = data.title;
-    this.formData.setValue({
-      title: data.title,
-      id: data.Id,
-      });
-      
-    this.modalRef = this.modalService.show(Template);
-   
+
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
- 
+  
+
   onclickSubmit(updateData: object) {
     console.log('request data', updateData)
     this.dataService.updateData(updateData)
