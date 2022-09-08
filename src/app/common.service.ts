@@ -32,12 +32,16 @@ export class CommonService {
     const body = {
       method: 'PUT',
       body: JSON.stringify({
-        id: 1,
+        id: data.id,
         title: data.title,
         body: data.title,
         userId: data.id,
-        
-       }),
+        description:data.description,
+        price: data.price,
+        discountPercentage:data.discountPercentage,
+        rating:data.rating,
+        stock: data.stock 
+}),
       headers: {
         'content-type': 'application/json; charset=UTF-8',
       },

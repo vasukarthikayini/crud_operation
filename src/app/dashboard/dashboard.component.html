@@ -5,12 +5,11 @@
 </ul>-->
 
 <p> {{ data }}</p>
+<div class="container">
 <table
   class="table table-bordered"> 
- 
- 
-  <thead class="datatable-header">
-  
+ <thead class="datatable-header">
+        <tr>
         <th>ID</th>
         <th>title</th>
         <th>description</th>
@@ -21,6 +20,8 @@
         <th>brand</th>
         <th>category</th>
         <th>action</th>
+      </tr>
+      
         </thead>
         <tbody>
       
@@ -52,38 +53,52 @@
              </td>
              <td>
               {{ data.category }}
-             </td> 
-             <td><button type="button" class="btn btn-danger" (click)="openModalnew(data)">Edit</button></td>
-          <td><button
-          type="button"
-          class="btn btn-primary">Delete</button></td>
-           
-             
-          <div>
-          <label for="id">id: </label>
-          <input id="id" type="text" [formControl]="id"><br>
-          <label for="title">title: </label>
-          <input title="description " type="text" [formControl]="description"><br>
-
-          <label for="description ">description : </label>
-          <input price ="price " type="text" [formControl]="price "><br>
-          <label for="price ">price : </label>
-          <input discountPercentage="discountPercentage" type="text" [formControl]="discountPercentage"><br>
-          <label for="discountPercentage">discountPercentage: </label>
-          <input rating="rating" type="text" [formControl]="rating"><br>
-          <label for="rating">rating </label>
-          <input stock="stock" type="text" [formControl]="stock"><br>
-          <label for="stock">stock </label>
-          <input brand="brand" type="text" [formControl]="brand"><br>
-          <label for="category">category</label>
-          <input category="category" type="text" [formControl]="category">
-          
-          </div>
-        </tr>
-      </tbody>
+             </td>
+            <td><button type="button" 
+              class="btn btn-danger" (click)="openModal(template,data)"
+              >Edit</button></td>
+           <td><button type="button"
+            class="btn btn-primary"
+            >Delete</button></td> 
+          </tr>
+        </tbody>
+       </table>
+      </div>
+      <ng-template #template>
+       
+        <div class="modal-body">
+        <form  [formGroup]="formData" >
+             <label>Id:</label>
+             <input type="text"  class="form-control" formControlName="Id" ><br>
+             <lable>Title:</lable>
+             <input type="text" class="form-control"  formControlName="Title"><br>
+             <input title="description " type="text" [formControl]="description"><br>
+             <label for="description ">description:</label>
+             <input price ="price " type="text" [formControl]="price "><br>
+             <label for="price ">price:</label>
+             <input discountPercentage="discountPercentage" type="text" [formControl]="discountPercentage"><br>
+             <label for="discountPercentage">discountPercentage: </label>
+             <input rating="rating" type="text" [formControl]="rating"><br>
+             <label for="rating">rating </label>
+             <input stock="stock" type="text" [formControl]="stock"><br>
+             <label for="stock">stock </label>
+             <input brand="brand" type="text" [formControl]="brand"><br>
+             <label for="category">category</label>
+             <input category="category" type="text" [formControl]="category">
+             <button type="submit"  class="btn btn-primary" (click)="onClickSubmit( formData.value)">Update</button> 
+         </form>
+                      
+         </div>
+         <div class="modal-footer">
+             <button  class="btn btn-primary" (click)="modalRef.hide()">clear</button>
+         </div>
+     </ng-template>
+        
+ 
+    
         
          
-        </table>
+     
         
 
 

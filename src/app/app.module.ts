@@ -27,6 +27,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { PipesModule } from 'w-ng5';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { Ng2OrderModule } from 'ng2-order-pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +53,9 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
     Ng2OrderModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
+    NgbModule,  
+    FilterPipeModule,
  
-    FilterPipeModule
   
    ],
   providers: [BsModalService,
