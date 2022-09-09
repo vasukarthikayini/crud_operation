@@ -7,6 +7,8 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { AuthguardService } from './authguard.service';
 import { AuthenticationGuard } from './authentication.guard';
+import { PopupComponent } from './popup/popup.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -16,6 +18,10 @@ const routes : Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'popup',
+    component: PopupComponent
   },
   {
     path: 'home',
@@ -36,6 +42,10 @@ const routes : Routes = [
   {
     path: '**',
     component: NotFoundPageComponent
+  },
+  {
+    path: 'primary',
+    component: MainComponent
   },
   {
     path: "user",

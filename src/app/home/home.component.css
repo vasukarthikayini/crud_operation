@@ -1,3 +1,13 @@
 table {
     width: 100%;
+    text-align: center;
+   
   }
+  .datatable-header {
+    float: center;
+  }
+  .datatable md-4 {
+    text-align: center;
+  }
+ 
+ 

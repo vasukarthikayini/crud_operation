@@ -6,14 +6,14 @@ import { MessageService } from '../message.service';
   styleUrls: ['./message-board.component.css']
 })
 export class MessageBoardComponent implements OnInit {
-  Message:string;
+ // Message:string;
 
   constructor(private MessageService: MessageService) { }
 
   ngOnInit(): void {
-    this.MessageService.messageSubject.subscribe (data => {
-      this.Message = data;
-    })
+    //this.MessageService.messageSubject.subscribe (data => {
+     // this.Message = data;
+    //})
   }
 
 }

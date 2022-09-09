@@ -28,6 +28,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { Ng2OrderModule } from 'ng2-order-pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent } from './popup/popup.component';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MainComponent,
     NotFoundPageComponent,
     MessageBoardComponent,
+    PopupComponent
+   
   
     //UserComponent
     ],

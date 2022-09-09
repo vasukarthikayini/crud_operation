@@ -1,23 +1,26 @@
 
 
 <div class="datatable md-4">
+ 
 
-    <h2>Api Table</h2>
+    <h2 style="background-color:rgba(0,0,255,0.3); text-align: center;">User Details</h2>
      <div class="form-group">
     <input
       type="text"
       class="form-control"
       placeholder="Search..."
+      style="outline-style: solid;
+      outline-color: #4ed9f5"
       [(ngModel)]="userFilter.title"
-      />
+   />
   </div>
   
     <table
     class="table table-bordered">
    
-   <thead class="datatable-header">
+   <thead class="datatable-header" style="background-color:rgba(255,0,0,0.3); color: black; text-align: center; border: 2px solid black; border-collapse: collapse;">
         <tr>
-          <th (click)="sort(id)"> id &nbsp;<i class="fa fa-sort"></i> icon</th>
+          <th  (click)="sort(id)"> id &nbsp;<i class="fa fa-sort"></i> icon</th>
           <th>title </th>
           <th>description </th>
           <th>price</th>
@@ -26,7 +29,7 @@
           <th>stock</th>
           <th>brand</th>
           <th>category</th>
-          
+          <th>Action</th>
          </tr>
       
     </thead>
