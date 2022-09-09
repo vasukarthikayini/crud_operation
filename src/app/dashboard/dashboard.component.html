@@ -5,6 +5,7 @@
 </ul>-->
 
 <p> {{ data }}</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 <table class="table table-bordered"> 
@@ -54,12 +55,14 @@
              <td>
               {{ data.category }}
             </td>
-            <td><button  type="button" 
-              class="btn btn-danger"  (click)="openModal(template, data)"
-            >Edit</button></td>
+           
+            
+             <td class="fa fa-pencil fa-2x"><button  type="button" 
+               (click)="openModal(template, data)"
+            ></button></td>
             <td> <button type="button"
-              class="btn btn-primary" (click)="delete(data.id)"
-              >Delete</button> </td>
+              class="fa fa-trash fa-2x" (click)="delete(data.id)"
+              ></button> </td>
               <td><button type="button"  class="btn btn-primary" (click)="openFormModal()" class="btn btn-dark">
                 Update
               </button></td>

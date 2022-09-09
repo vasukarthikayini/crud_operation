@@ -43,6 +43,7 @@ export class DashboardComponent implements OnInit {
   modalRef: BsModalRef;
   @Input() item: any;
   formModal: any;
+
   
   //@Input('arrData') item: {item};
   // @Output() newItemEvent = new EventEmitter<string>();
@@ -60,8 +61,12 @@ export class DashboardComponent implements OnInit {
     console.log('inside the data', this.data);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { 
+    
+  }
+  
   openModal(template: TemplateRef<any>, data: any) {
+  
     this.modalRef = this.modalService.show(template);
     console.log('inside the value', data);
     //this.title = data.title;

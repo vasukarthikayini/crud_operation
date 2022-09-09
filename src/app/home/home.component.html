@@ -20,7 +20,7 @@
    
    <thead class="datatable-header" style="background-color:rgba(255,0,0,0.3); color: black; text-align: center; border: 2px solid black; border-collapse: collapse;">
         <tr>
-          <th  (click)="sort(id)"> id &nbsp;<i class="fa fa-sort"></i> icon</th>
+          <th  (click)="sort(id)"> id &nbsp;<i class="fa fa-sort"></i> </th>
           <th>title </th>
           <th>description </th>
           <th>price</th>
@@ -71,9 +71,8 @@
             {{ item.category }}
            </td> 
            <td>
-            <button type="submit" class="btn btn-primary" (click)="showStyle(item)">
-              Details
-            </button>
+            <button type="submit" class="ffa fa-user-circle fa-2x" (click)="showStyle(item)">
+           </button>
                    
           </td>
           </tr>
