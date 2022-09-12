@@ -1,6 +1,62 @@
 <p>popup works!</p>
 
+
    
- <button class="btn btn-danger">Open Modal</button>
  
+<button class="btn btn-lg btn-outline-primary" (click)="open(mymodal)">Open My Modal</button>
+
+   
+
+<ng-template #mymodal let-modal>
+
+  <div class="modal-header">
+
+    <h4 class="modal-title" id="modal-basic-title">Bootstrap Modal</h4>
+
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+
+      <span aria-hidden="true">×</span>
+
+    </button>
+
+  </div>
+
+  <div class="modal-body">
+ <form>
+            <label>Id:</label>
+              <input type="text" value="{{data.id}}" class="form-control" formControlName="Id"><br>
+           
+              <label>Title:</label>
+              <input type="text" value="{{ data.title }}" class="form-control"  formControlName="Title"><br>
+           
+              <label>description:</label>
+              <input title="description"  value="{{data.description}}"type="text" formControlName="description"><br>
+           
+              <label>price:</label>
+              <input price ="price" value=" {{ data.price }}" type="text" formControlName ="price"><br>
+           
+              <label>discountPercentage: </label>
+              <input discountPercentage="discountPercentage" value="{{data.discountPercentage}}" type="text" formControlName="discountPercentage"><br>
+           
+              <label>rating </label>
+              <input rating="rating" type="text"  value="{{ data.rating }}"formControlName="rating"><br>
+           
+              <label>stock </label>
+              <input stock="stock" type="text"  value="{{data.stock}}"formControlName="stock"><br>
+           
+              <label>brand</label>
+              <input brand="brand" type="text"  value="{{data.brand}}"formControlName="brand"><br>
+           
+              <label>category</label>
+              <input category="category" type="text" value="{{data.category}}" formControlName="category"> <br>
+            </form>
+  </div>
+
+  <div class="modal-footer">
+
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+
+  </div>
+
+</ng-template>
  

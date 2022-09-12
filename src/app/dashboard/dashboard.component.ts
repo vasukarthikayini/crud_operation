@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CommonService } from '../common.service';
+import { ToastrService } from 'ngx-toastr';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { NgForOf } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -22,6 +23,9 @@ declare var window: any;
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+
+
+  closeResult: string = '';
 
   closeModal: string;
   arrData: [] = [];
@@ -43,6 +47,7 @@ export class DashboardComponent implements OnInit {
   modalRef: BsModalRef;
   @Input() item: any;
   formModal: any;
+ 
 
   
   //@Input('arrData') item: {item};
@@ -54,6 +59,7 @@ export class DashboardComponent implements OnInit {
     private route: ActivatedRoute,
     private dataService: CommonService,
     private router: Router,
+  
    
     
   ) {
@@ -66,6 +72,7 @@ export class DashboardComponent implements OnInit {
   }
   
   openModal(template: TemplateRef<any>, data: any) {
+    //this.toast.success({detail:"success message", summary:result.message,duration:5000})
   
     this.modalRef = this.modalService.show(template);
     console.log('inside the value', data);
@@ -84,9 +91,8 @@ export class DashboardComponent implements OnInit {
     openFormModal(data) {
       //this.formModal.show(data);
       this.router.navigate(["popup"])
+     
     }
-  
-
     onClickSubmit(updatedData: object): void {
     console.log('inside the data', updatedData);
     this.dataService.updateData(updatedData).subscribe((result) => {

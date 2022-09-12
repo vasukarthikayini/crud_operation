@@ -27,9 +27,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 //import { PipesModule } from 'w-ng5';
 import { FilterPipeModule } from 'ngx-filter-pipe';
 import { Ng2OrderModule } from 'ng2-order-pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from './popup/popup.component';
 
+
+import {ToastrService} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { PopupComponent } from './popup/popup.component';
     MainComponent,
     NotFoundPageComponent,
     MessageBoardComponent,
-    PopupComponent
+    PopupComponent,
+
    
   
     //UserComponent
@@ -59,6 +62,13 @@ import { PopupComponent } from './popup/popup.component';
     Ng2SearchPipeModule,
     NgbModule,  
     FilterPipeModule,
+    NgbToastModule,
+    
+    
+  
+  
+   
+    
  
   
    ],

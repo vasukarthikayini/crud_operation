@@ -4,11 +4,12 @@
  
 </ul>-->
 
-<p> {{ data }}</p>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-<table class="table table-bordered"> 
+<table class="table table-bordered">
+  <!-- <p> {{ data }}</p>  -->
  <thead class="datatable-header">
  
  <tbody>
@@ -55,56 +56,62 @@
              <td>
               {{ data.category }}
             </td>
-           
-            
-             <td class="fa fa-pencil fa-2x"><button  type="button" 
-               (click)="openModal(template, data)"
-            ></button></td>
+           <td ><button  type="button"  class="fa fa-pencil fa-2x"
+               (click)="openModal(productmodal, data)"></button></td> 
             <td> <button type="button"
               class="fa fa-trash fa-2x" (click)="delete(data.id)"
               ></button> </td>
-              <td><button type="button"  class="btn btn-primary" (click)="openFormModal()" class="btn btn-dark">
-                Update
-              </button></td>
-            <ng-template> 
-            <div class="modal-header">
-              <button type="button" class="close pull-right" aria-label="Close" (click)="closeExit()"></button>
-            </div>
+            
+            <ng-template #productmodal> 
+          
             <div class="modal-body">
+              
               <label>Id:</label>
-              <input type="text" value="{{data.id}}" class="form-control" formControlName="Id"><br>
+              <input type="text" value="{{data.id}}" class="form-control" formControlName="Id">
+              <br>
            
               <label>Title:</label>
-              <input type="text" value="{{ data.title }}" class="form-control"  formControlName="Title"><br>
+              <input type="text" value="{{data.title}}" class="form-control"  formControlName="Title">
+              <br>
            
-              <label>description:</label>
-              <input title="description"  value="{{ data.description }}"type="text" formControlName="description"><br>
+              <label>Description:</label>
+              <input title="description"  value="{{data.description}}"type="text"  class="form-control"  formControlName="description">
+              <br>
            
-              <label>price:</label>
-              <input price ="price" value=" {{ data.price }}" type="text" formControlName ="price"><br>
+              <label>Price:</label>
+              <input price ="price" value=" {{ data.price }}" type="text"  class="form-control"  formControlName ="price">
+              <br>
            
-              <label>discountPercentage: </label>
-              <input discountPercentage="discountPercentage" value="{{ data.rating }}" type="text" formControlName="discountPercentage"><br>
+              <label>DiscountPercentage:</label>
+              <input discountPercentage="discountPercentage" value="{{data.discountPercentage}}" type="text"  class="form-control"  formControlName="discountPercentage">
+              <br>
            
-              <label>rating </label>
-              <input rating="rating" type="text"  value="{{ data.stock }}"formControlName="rating"><br>
+              <label>Rating </label>
+              <input rating="rating" type="text"   class="form-control"  value="{{ data.rating }}"formControlName="rating">
+              <br>
            
-              <label>stock </label>
-              <input stock="stock" type="text"  value="{{ data.brand }}"formControlName="stock"><br>
+              <label>Stock </label>
+              <input stock="stock" type="text"  class="form-control"  value="{{data.stock}}"formControlName="stock">
+              <br>
            
-              <label>brand</label>
-              <input brand="brand" type="text"  value="{{ data.category }}"formControlName="brand"><br>
+              <label>Brand</label>
+              <input brand="brand" type="text" class="form-control"  value="{{data.brand}}"formControlName="brand">
+              <br>
            
-              <label>category</label>
-              <input category="category" type="text" formControlName="category"> <br>
+              <label>Category</label>
+              <input category="category"  class="form-control" type="text" value="{{data.category}}" formControlName="category">
+               <br>
+              <modal-footer>
+                <button type="button" class="btn btn-primary" aria-label="Close" (click)="closeExit()">close</button>
+                <td><button type="button"  class="btn btn-primary" (click)="openFormModal()">
+                  Update
+                </button></td>
+              </modal-footer>
               
-              <button class="btn btn-outline-primary" (click)="onClickSubmit(updateData)">Save</button>
-             
+            
             </div>
-
-          </ng-template>
-    
-             </tr>
+       </ng-template> 
+     </tr>
       </tbody>
        </table>
        

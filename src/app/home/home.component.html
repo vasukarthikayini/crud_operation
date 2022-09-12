@@ -71,7 +71,7 @@
             {{ item.category }}
            </td> 
            <td>
-            <button type="submit" class="ffa fa-user-circle fa-2x" (click)="showStyle(item)">
+            <button type="submit"  class="btn btn-primary" (click)="showStyle(item)"> Details
            </button>
                    
           </td>
@@ -92,8 +92,7 @@
         <pagination-controls
           previousLabel="Prev"
           nextLabel="Next"
-          (pageChange)="onTableDataChanges($event)"
-        >
+          (pageChange)="onTableDataChanges($event)">
         </pagination-controls>
      <!--<template [routerLink]="['/dashboard', item]" 
       [querparams]="{allowEdit: 'item'}" href="#" class="list-group-item" *ngFor="let of item of arrData">{{ item }}</template>-->
@@ -104,108 +103,6 @@
    
        
 
-    <!--- <div class="from">
-      delete the data
-
-      <button type="button" class="btn btn primary" (click)="deleteData()">
-        yes
-      </button>
     
-     <td>
-                <button  type="button" class="btn btn-primary" (submit)="Delete(data)">Delete </button> 
-             </td>
-
-            <button type="button" class="btn btn primary" (click)="deleteData(data)">Close</button>
-    </div>-->
-    <!--<div class="from">
-      Lazy loading the data
-      <button
-        style="padding: 15px; color: white; background-color: pink"
-        routerLink="user"
-      >
-        Load Module A
-      </button>
-    </div>
-    <div>
-      Subjects in angular 
-      <p> Enter message: <input type="text" #message />
-        <button (click)="sendMessage(message)"> Send message</button>
-      </p>
-     
-    </div>-->
-
-   
-    <!-- <td>
-                <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offscreen" (submit)="OnClickSubmit()">Update </button> 
-             </td>-->
-
-    <!-- <ng-template #template>
-            <div class="modal-header">
-               <h4 class="modal-title pull-left">Modal</h4>
-             <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-                  <span aria-hidden="true">×</span>
-               </button>
-              
- 
-           
-         <div class="modal body">
-         <form 
-         
-             [formGroup]="formdata" [ngsubmit]="onclickSubmit(formdata.value)">
-                 <label>Id</label>
-                 <input type = "text" next="title" placeholder="title" formControlName =  'id'/>
-                 <br/>
-                 <label>Title</label>
-                 <input type = "text" next="title" placeholder="title" formControlName =  'title'/>
-                 <br/>
-                 <input type="submit" class="btn btn-primary" value="Update"/>
-                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" (click)="modalRef.hide()">Close</button>
-                    </div>
-         </form>
-            </div>
-        </div>
-   </ng-template>-->
-
-    <!--  <div>
-
-        <input>
-            id:<input type="text" (ngmodel)="editData">
-         
-            title:<input value="editData.title"/>
-        </div>
-
-         <div class="offcanvas offcanvas-start" id="offscreen">
-                <div class="offcanvas-header">
-                    <h1 class="offcanvas-title">Update</h1>
-                   
-
-                </div>
-                <div class="offcanvas-body">
-                    <form onsubmit="update">
-                    </form>
-                    <input type="text" id="id" title="title" placeholder="id"><br>
-                    <span id="id" class="text-danger"></span>
-                    <span title="title"class="text-danger"></span>
-
-                </div>
-             </div>
-             <td>
-                <button  type="button" class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#offscreen" (submit)="OnClickSubmit()">Update </button> -->
-
-    <!--<div>
-                <label for="id">id: </label>
-                <input id="id" type="text" [formControl]="id">
-                <td><button type="button" class="btn btn-danger" (click)="openModalnew(template)">Edit</button></td>
-              </div>-->
-
-    <!--<button type="button" class="btn btn-primary" (click)="openModalnew(template)">Open modal</button>
-                <div class="mb-1">
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                         <button (click)="save()" [disabled]="userform.invalid" class="btn btn-primary" type="button">
-                             {{id==0 || id==null ?'Save':'Update'}}</button>
-                         <button class="btn btn-secondary" type="button">Reset </button>
-                         
-                     </div>-->
   </div>
 
